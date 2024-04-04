@@ -5,7 +5,7 @@ import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:gap/gap.dart';
+
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:getwidget/components/button/gf_button.dart';
@@ -21,7 +21,7 @@ import 'package:google_sign_in/google_sign_in.dart';
 
 class SignUpPage extends StatefulWidget {
   final Function() onClickedSignUp;
-  const SignUpPage({super.key, required this.onClickedSignUp});
+  const SignUpPage({Key? key, required this.onClickedSignUp});
 
   @override
   State<SignUpPage> createState() => _SignUpPageState();
@@ -35,7 +35,7 @@ class _SignUpPageState extends State<SignUpPage> {
 
   void getPhoneNumber(String phoneNumber) async {
     PhoneNumber number =
-        await PhoneNumber.getRegionInfoFromPhoneNumber(phoneNumber, 'US');
+    await PhoneNumber.getRegionInfoFromPhoneNumber(phoneNumber, 'US');
     setState(() {
       this.number = number;
     });
@@ -58,26 +58,26 @@ class _SignUpPageState extends State<SignUpPage> {
           key: formKey,
           child: ListView(
             children: [
-              Gap(AppLayout.getHeight(40)),
+              SizedBox(height: AppLayout.getHeight(40)),
               SvgPicture.asset(
                 'assets/images/welcome.svg',
                 height: 200,
                 width: 200,
               ),
 
-              Gap(AppLayout.getHeight(40)),
+              SizedBox(height: AppLayout.getHeight(40)),
               Text(
                 'Register',
                 style: Styles.headLineStyle3,
                 textAlign: TextAlign.center,
               ),
-              Gap(AppLayout.getHeight(10)),
+              SizedBox(height: AppLayout.getHeight(10)),
               Text(
                 'OTP Verification, We will send you a one-time password to this mobile number',
                 style: Styles.headLineStyle4,
                 textAlign: TextAlign.center,
               ),
-              Gap(AppLayout.getHeight(20)),
+              SizedBox(height: AppLayout.getHeight(20)),
               Container(
                 padding: EdgeInsets.symmetric(vertical: 2, horizontal: 12),
                 decoration: BoxDecoration(
@@ -138,7 +138,7 @@ class _SignUpPageState extends State<SignUpPage> {
                   ],
                 ),
               ),
-              Gap(AppLayout.getHeight(20)),
+              SizedBox(height: AppLayout.getHeight(20)),
               SizedBox(
                 height: AppLayout.getHeight(50),
                 child: ElevatedButton(
@@ -149,13 +149,13 @@ class _SignUpPageState extends State<SignUpPage> {
                   child: Text('Sign Up'),
                 ),
               ),
-              Gap(AppLayout.getHeight(40)),
+              SizedBox(height: AppLayout.getHeight(40)),
               Text(
                 'or continue with:',
                 style: Styles.headLineStyle4,
                 textAlign: TextAlign.center,
               ),
-              Gap(AppLayout.getHeight(10)),
+              SizedBox(height: AppLayout.getHeight(10)),
               SizedBox(
                 height: AppLayout.getHeight(50),
                 child: ElevatedButton.icon(
@@ -169,7 +169,7 @@ class _SignUpPageState extends State<SignUpPage> {
                   ), //label text
                 ),
               ),
-              Gap(AppLayout.getHeight(10)),
+              SizedBox(height: AppLayout.getHeight(10)),
               SizedBox(
                 height: AppLayout.getHeight(50),
                 child: ElevatedButton.icon(
@@ -183,7 +183,7 @@ class _SignUpPageState extends State<SignUpPage> {
                   ), //label text
                 ),
               ),
-              Gap(AppLayout.getHeight(10)),
+              SizedBox(height: AppLayout.getHeight(10)),
               // SizedBox(
               //   height: AppLayout.getHeight(50),
               //   child: GFButton(
@@ -195,7 +195,7 @@ class _SignUpPageState extends State<SignUpPage> {
               //     icon: Icon(UniconsLine.google, color: Styles.whiteColor),
               //   ),
               // ),
-              Gap(AppLayout.getHeight(20)),
+              SizedBox(height: AppLayout.getHeight(20)),
               RichText(
                 text: TextSpan(
                   style: Styles.headLineStyle4,

@@ -38,7 +38,7 @@ dependencies:
   unicons: ^2.1.0
   fluentui_icons: ^1.0.0
   get: ^4.6.5
-  gap: ^2.0.0
+
   intl_phone_number_input: ^0.7.1
   flutter_otp_text_field: ^1.1.1
   getwidget: ^2.0.4

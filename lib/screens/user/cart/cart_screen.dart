@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:gap/gap.dart';
+
 import 'package:get/get.dart';
 import 'package:grocery_app_2022/controller/cart_controller.dart';
 import 'package:grocery_app_2022/screens/user/cart/payment_cart.dart';
@@ -58,7 +58,7 @@ class CartScreen extends StatelessWidget {
                           ],
                         ),
                         Divider(color: Styles.primaryColor),
-                        const Gap(10),
+
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
@@ -67,7 +67,7 @@ class CartScreen extends StatelessWidget {
                                 style: Styles.headLineStyle4),
                           ],
                         ),
-                        const Gap(10),
+
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [

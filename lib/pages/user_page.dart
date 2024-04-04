@@ -10,6 +10,8 @@ import 'package:grocery_app_2022/screens/user/profile/profile_screen.dart';
 import 'package:grocery_app_2022/styles/app_layout.dart';
 import 'package:grocery_app_2022/styles/styles.dart';
 import 'package:unicons/unicons.dart';
+import 'package:badges/badges.dart' as badges;
+
 
 import '../controller/cart_controller.dart';
 import '../screens/user/cart/cart_screen.dart';
@@ -92,7 +94,7 @@ class BadgeIcon extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Obx(() => cartController.products.length > 0
-        ? Badge(
+        ? badges.Badge(
             badgeContent: Text(cartController.products.length.toString(),
                 style: Styles.headLineStyle4.copyWith(color: Styles.bgColor)),
             child: Icon(Icons.shopping_bag_outlined),

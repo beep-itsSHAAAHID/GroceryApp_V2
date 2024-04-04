@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:gap/gap.dart';
 import 'package:get/get.dart';
 import 'package:getwidget/components/dropdown/gf_dropdown.dart';
 import 'package:grocery_app_2022/controller/product_controller.dart';
@@ -17,7 +16,7 @@ import '../../widgets/build_appbar.dart';
 import '../../widgets/build_image.dart';
 
 class UploadProductScreen extends StatelessWidget {
-  UploadProductScreen({super.key, this.product});
+  UploadProductScreen({Key? key, this.product});
   final dynamic product;
 
   ProductController productController = Get.find();
@@ -34,7 +33,7 @@ class UploadProductScreen extends StatelessWidget {
         child: Padding(
           padding: const EdgeInsets.all(20),
           child: Obx(
-            () => Form(
+                () => Form(
               autovalidateMode: product == null
                   ? AutovalidateMode.onUserInteraction
                   : AutovalidateMode.disabled,
@@ -43,21 +42,21 @@ class UploadProductScreen extends StatelessWidget {
                 children: [
                   product != null
                       ? BuildAppBar(
-                          title: product == null
-                              ? 'Upload Product'
-                              : 'Edit Product',
-                        )
+                    title: product == null
+                        ? 'Upload Product'
+                        : 'Edit Product',
+                  )
                       : Text('Add a new product', style: Styles.headLineStyle3),
-                  const Gap(40),
+                  SizedBox(height: 40),
                   product == null
                       ? BuildImage(
-                          imagePath: imageController.image,
-                          callback: () => imageController.pickImage())
+                      imagePath: imageController.image,
+                      callback: () => imageController.pickImage())
                       : BuildImage(
-                          imageUrl: product.imageUrl,
-                          imagePath: imageController.image,
-                          callback: () => imageController.pickImage()),
-                  const Gap(40),
+                      imageUrl: product.imageUrl,
+                      imagePath: imageController.image,
+                      callback: () => imageController.pickImage()),
+                  SizedBox(height: 40),
                   BuildTextFormField(
                     'Title',
                     product != null ? product.title : 'Product name',
@@ -65,7 +64,7 @@ class UploadProductScreen extends StatelessWidget {
                     UniconsLine.label_alt,
                     TextInputType.text,
                   ),
-                  const Gap(10),
+                  SizedBox(height: 10),
                   BuildTextFormField(
                     'Price',
                     product != null
@@ -73,9 +72,9 @@ class UploadProductScreen extends StatelessWidget {
                         : 'Product price 25.99\$',
                     productController,
                     UniconsLine.bill,
-                    const TextInputType.numberWithOptions(decimal: true),
+                    TextInputType.numberWithOptions(decimal: true),
                   ),
-                  const Gap(10),
+                  SizedBox(height: 10),
                   BuildTextFormField(
                       'Discount',
                       product != null
@@ -84,28 +83,28 @@ class UploadProductScreen extends StatelessWidget {
                       productController,
                       Icons.discount_outlined,
                       TextInputType.number),
-                  const Gap(10),
+                  SizedBox(height: 10),
                   DropdownButtonFormField(
                       decoration: Styles.dropdownDecoration.copyWith(
                         prefixIcon:
-                            Icon(UniconsLine.apps, color: Styles.orangeColor),
+                        Icon(UniconsLine.apps, color: Styles.orangeColor),
                       ),
                       onChanged: (value) => {
-                            productController.selectedCategory =
-                                value.toString(),
-                          },
+                        productController.selectedCategory =
+                            value.toString(),
+                      },
                       value: productController.category.isNotEmpty
                           ? productController.category[0]
                           : productController.selectedCategory,
                       items: productController.category
                           .map((item) => DropdownMenuItem(
-                                value: item,
-                                child: Text(
-                                  item,
-                                ),
-                              ))
+                        value: item,
+                        child: Text(
+                          item,
+                        ),
+                      ))
                           .toList()),
-                  const Gap(10),
+                  SizedBox(height: 10),
                   Container(
                     decoration: BoxDecoration(
                       color: Colors.white,
@@ -121,8 +120,8 @@ class UploadProductScreen extends StatelessWidget {
                             subtitle: Text('Product weight in kilograms',
                                 style: Styles.headLineStyle4),
                             onChanged: (value) => {
-                                  productController.selectedUnits = value!,
-                                }),
+                              productController.selectedUnits = value!,
+                            }),
                         RadioListTile(
                             activeColor: Styles.orangeColor,
                             value: 2,
@@ -131,12 +130,12 @@ class UploadProductScreen extends StatelessWidget {
                             subtitle: Text('Product weight in pieces',
                                 style: Styles.headLineStyle4),
                             onChanged: (value) => {
-                                  productController.selectedUnits = value!,
-                                }),
+                              productController.selectedUnits = value!,
+                            }),
                       ],
                     ),
                   ),
-                  const Gap(10),
+                  SizedBox(height: 10),
                   Container(
                     decoration: BoxDecoration(
                       color: Colors.white,
@@ -153,7 +152,7 @@ class UploadProductScreen extends StatelessWidget {
                           subtitle: Text('Product available in stock',
                               style: Styles.headLineStyle4),
                           onChanged: (value) =>
-                              productController.availableInStock = value!,
+                          productController.availableInStock = value!,
                         ),
                         RadioListTile(
                           activeColor: Styles.orangeColor,
@@ -163,12 +162,12 @@ class UploadProductScreen extends StatelessWidget {
                           subtitle: Text('Product out of stock',
                               style: Styles.headLineStyle4),
                           onChanged: (value) =>
-                              productController.availableInStock = value!,
+                          productController.availableInStock = value!,
                         ),
                       ],
                     ),
                   ),
-                  const Gap(10),
+                  SizedBox(height: 10),
                   TextFormField(
                     validator: (value) => value!.isEmpty
                         ? 'Please this field must be filled'
@@ -190,43 +189,43 @@ class UploadProductScreen extends StatelessWidget {
                           : 'Write product description here..',
                     ),
                   ),
-                  const Gap(20),
+                  SizedBox(height: 20),
                   product == null
                       ? SizedBox(
-                          height: AppLayout.getHeight(50),
-                          child: ElevatedButton(
-                            onPressed: () {
-                              productController.uploadProduct();
-                            },
-                            child: Text('Upload Product'),
-                          ),
-                        )
+                    height: AppLayout.getHeight(50),
+                    child: ElevatedButton(
+                      onPressed: () {
+                        productController.uploadProduct();
+                      },
+                      child: Text('Upload Product'),
+                    ),
+                  )
                       : Container(),
                   product != null
                       ? SizedBox(
-                          height: AppLayout.getHeight(50),
-                          child: ElevatedButton(
-                            onPressed: () {
-                              productController.updateProduct(product);
-                            },
-                            child: const Text('Update Product'),
-                          ),
-                        )
+                    height: AppLayout.getHeight(50),
+                    child: ElevatedButton(
+                      onPressed: () {
+                        productController.updateProduct(product);
+                      },
+                      child: const Text('Update Product'),
+                    ),
+                  )
                       : Container(),
-                  const Gap(10),
+                  SizedBox(height: 10),
                   product != null
                       ? SizedBox(
-                          height: AppLayout.getHeight(50),
-                          child: ElevatedButton(
-                            onPressed: () async {
-                              await productController.deleteProduct(product.id);
-                              Navigator.pop(context);
-                            },
-                            child: const Text('Delete Product'),
-                          ),
-                        )
+                    height: AppLayout.getHeight(50),
+                    child: ElevatedButton(
+                      onPressed: () async {
+                        await productController.deleteProduct(product.id);
+                        Navigator.pop(context);
+                      },
+                      child: const Text('Delete Product'),
+                    ),
+                  )
                       : Container(),
-                  const Gap(10),
+                  SizedBox(height: 10),
                 ],
               ),
             ),
@@ -237,12 +236,12 @@ class UploadProductScreen extends StatelessWidget {
   }
 
   TextFormField BuildTextFormField(
-    String title,
-    String hintText,
-    ProductController productController,
-    IconData icon,
-    TextInputType textInputType,
-  ) {
+      String title,
+      String hintText,
+      ProductController productController,
+      IconData icon,
+      TextInputType textInputType,
+      ) {
     return TextFormField(
       validator: (value) => value!.isEmpty ? 'Enter a valid value' : null,
       onChanged: (value) => {

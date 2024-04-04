@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:gap/gap.dart';
+
 import 'package:get/get.dart';
 import 'package:grocery_app_2022/controller/favorite_controller.dart';
 import 'package:grocery_app_2022/controller/product_controller.dart';
@@ -87,7 +87,7 @@ class ProductCard extends StatelessWidget {
                   ),
                 ],
               ),
-              const Gap(10),
+
               Text(
                 product.title,
                 style: Styles.textStyle,
@@ -108,7 +108,7 @@ class ProductCard extends StatelessWidget {
                                 : TextDecoration.none,
                             color: Styles.orangeColor),
                       ),
-                      const Gap(4),
+
                       Text(
                         product.discount.isGreaterThan(0)
                             ? '${(product.price - (product.price * product.discount / 100)).toStringAsFixed(2)}\$'

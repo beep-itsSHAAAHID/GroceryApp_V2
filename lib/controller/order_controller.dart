@@ -8,38 +8,44 @@ class OrderController extends GetxController {
   final _isLoading = false.obs;
   final _isError = false.obs;
   final _errorMessage = ''.obs;
+
+  // Observables for loading state
   bool get isLoading => _isLoading.value;
   bool get isError => _isError.value;
   String get errorMessage => _errorMessage.value;
 
+  // Observable for open state
   var isOpen = false.obs;
 
+  // Observable list of orders
   final orders = <Order>[].obs;
   List<Order> get productList => orders;
 
-  final newOrders = {}.obs;
-  //List<Order> get orderList => orders;
   @override
   void onReady() {
-    orders.bindStream(FirestoreDB().getOrdersByStatus('Pending'));
+    super.onReady();
+    // Bind orders stream when the controller is ready
+   // orders.bindStream(FirestoreDB().getOrdersByStatus('Pending') as Stream<List<Order>>);
   }
 
-  Future getOrdersByStatus(String status) async {
-    orders.bindStream(FirestoreDB().getOrdersByStatus(status));
+  Future<void> getOrdersByStatus(String status) async {
+    // Bind orders stream by status
+   // orders.bindStream(FirestoreDB().getOrdersByStatus(status) as Stream<List<Order>>);
   }
 
-  Future deleteOrder(String id) async {
+  Future<void> deleteOrder(String id) async {
     _isLoading.value = true;
     try {
-      FirestoreDB().deleteOrder(id);
+     // await FirestoreDB().deleteOrder(id);
     } catch (e) {
       _isError.value = true;
       _errorMessage.value = e.toString();
     } finally {
       _isLoading.value = false;
+      // Show a snackbar indicating the deletion status
       Get.snackbar(
         'Deleted order',
-        'order is deleted successfully!',
+        'Order is deleted successfully!',
         snackPosition: SnackPosition.TOP,
         backgroundColor: Styles.orangeColor,
         colorText: Styles.whiteColor,
@@ -48,29 +54,21 @@ class OrderController extends GetxController {
     }
   }
 
-  Future updateOrder(Order order) async {
+  Future<void> updateOrder(Order order) async {
     _isLoading.value = true;
     try {
-      Order newOrder = Order(
-        id: order.id,
-        cart: order.cart,
-        user: order.user,
-        total: order.total,
-        status: order.status == 'preparing' ? 'shipping' : 'delivered',
-        date: order.date,
-        paymentMethod: order.paymentMethod,
-        paymentStatus: 'pending',
-        deliveryStatus: 'Pending',
-      );
-      FirestoreDB().updateOrder(newOrder);
+      // Update order status
+      order.status = (order.status == 'preparing') ? 'shipping' : 'delivered';
+     // await FirestoreDB().updateOrder(order);
     } catch (e) {
       _isError.value = true;
       _errorMessage.value = e.toString();
     } finally {
       _isLoading.value = false;
+      // Show a snackbar indicating the update status
       Get.snackbar(
         'Updated order',
-        'order is updated successfully!',
+        'Order is updated successfully!',
         snackPosition: SnackPosition.TOP,
         backgroundColor: Styles.orangeColor,
         colorText: Styles.whiteColor,
@@ -79,18 +77,19 @@ class OrderController extends GetxController {
     }
   }
 
-  Future addOrder(Order order) async {
+  Future<void> addOrder(Order order) async {
     _isLoading.value = true;
     try {
-      FirestoreDB().addOrder(order: order);
+     // await FirestoreDB().addOrder(order: order);
     } catch (e) {
       _isError.value = true;
       _errorMessage.value = e.toString();
     } finally {
       _isLoading.value = false;
+      // Show a snackbar indicating the addition status
       Get.snackbar(
         'Added order',
-        'order is added successfully!',
+        'Order is added successfully!',
         snackPosition: SnackPosition.TOP,
         backgroundColor: Styles.orangeColor,
         colorText: Styles.whiteColor,

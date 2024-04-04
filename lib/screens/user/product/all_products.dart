@@ -3,7 +3,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
-import 'package:gap/gap.dart';
+
 import 'package:get/get.dart';
 
 import 'package:grocery_app_2022/screens/user/product/product_card.dart';

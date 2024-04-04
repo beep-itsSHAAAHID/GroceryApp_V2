@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
-import 'package:gap/gap.dart';
+
 import 'package:getwidget/components/rating/gf_rating.dart';
 import 'package:getwidget/size/gf_size.dart';
 import 'package:grocery_app_2022/models/product.dart';
@@ -168,7 +168,7 @@ class ProductDetails extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text('Product Description', style: Styles.headLineStyle2),
-                const Gap(10),
+
                 Text(product.description, style: Styles.headLineStyle4),
               ],
             ),
@@ -184,7 +184,7 @@ class ProductDetails extends StatelessWidget {
               ),
             ),
           ),
-          const Gap(20),
+
         ],
       ),
     );

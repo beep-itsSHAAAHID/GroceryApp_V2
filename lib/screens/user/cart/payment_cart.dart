@@ -1,7 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:gap/gap.dart';
+
 import 'package:get/get.dart';
 import 'package:get/get_state_manager/get_state_manager.dart';
 import 'package:grocery_app_2022/controller/cart_controller.dart';
@@ -9,6 +9,8 @@ import 'package:grocery_app_2022/controller/order_controller.dart';
 import 'package:grocery_app_2022/controller/payment_controller.dart';
 import 'package:grocery_app_2022/controller/user_controller.dart';
 import 'package:grocery_app_2022/models/order.dart';
+import 'package:cloud_firestore/cloud_firestore.dart' as firestore;
+
 
 import 'package:grocery_app_2022/styles/styles.dart';
 import 'package:unicons/unicons.dart';
@@ -37,9 +39,9 @@ class PaymentCart extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const Gap(20),
+
                 Text('Payment method', style: Styles.headLineStyle3),
-                const Gap(10),
+
                 Container(
                   padding: const EdgeInsets.all(10),
                   decoration: BoxDecoration(
@@ -57,7 +59,7 @@ class PaymentCart extends StatelessWidget {
                           ],
                         ),
                         Divider(color: Styles.primaryColor),
-                        const Gap(10),
+
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
@@ -65,7 +67,7 @@ class PaymentCart extends StatelessWidget {
                             Text('200 USD ', style: Styles.headLineStyle4),
                           ],
                         ),
-                        const Gap(10),
+
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
@@ -77,9 +79,9 @@ class PaymentCart extends StatelessWidget {
                     ),
                   ),
                 ),
-                const Gap(60),
+
                 Text('Payment method', style: Styles.headLineStyle3),
-                const Gap(10),
+
                 Obx(
                   () => Container(
                     padding: const EdgeInsets.all(10),
@@ -129,24 +131,13 @@ class PaymentCart extends StatelessWidget {
               height: 50,
               child: ElevatedButton(
                 onPressed: () {
-                  Order newOrder = Order(
-                    cart: cartController.cartList,
-                    user: userController.myUser.toMap(),
-                    total: double.parse(cartController.total),
-                    status: 'preparing',
-                    date: DateTime.now().toString(),
-                    paymentMethod:
-                        paymentController.payment == 1 ? 'card' : 'cash',
-                    paymentStatus: 'pending',
-                    deliveryStatus: 'Pending',
-                  );
-                  orderController.addOrder(newOrder);
+                //implment ur confirm payment logic
                 },
                 child: const Text('Confirm payment'),
               ),
             ),
           ),
-          const Gap(20),
+
         ]),
       ),
     );

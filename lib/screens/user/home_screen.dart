@@ -1,42 +1,40 @@
+import 'package:flutter/material.dart' as flutter;
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:getwidget/components/search_bar/gf_search_bar.dart';
-import 'package:grocery_app_2022/controller/search_controller.dart';
+import 'package:grocery_app_2022/controller/search_controller.dart' as mySearchController;
 import 'package:grocery_app_2022/screens/user/product/all_products.dart';
-
 import 'package:grocery_app_2022/screens/user/product/category_product.dart';
 import 'package:grocery_app_2022/screens/user/product/search_product.dart';
 
 import '../../styles/app_layout.dart';
 import '../../styles/styles.dart';
 
-class HomeScreen extends StatelessWidget {
-  HomeScreen({super.key});
-
+class HomeScreen extends flutter.StatelessWidget {
   @override
-  Widget build(BuildContext context) {
-    SearchController searchController = Get.put(SearchController());
+  Widget build(flutter.BuildContext context) {
+    mySearchController.SearchController searchController = Get.put(mySearchController.SearchController());
     return DefaultTabController(
       length: 6,
-      child: Scaffold(
-        appBar: AppBar(
+      child: flutter.Scaffold(
+        appBar: flutter.AppBar(
           title: SearchBar(),
-          bottom: TabBar(
+          bottom: flutter.TabBar(
             isScrollable: true,
             indicatorColor: Styles.orangeColor,
-            indicatorSize: TabBarIndicatorSize.label,
+            indicatorSize: flutter.TabBarIndicatorSize.label,
             tabs: const [
-              Tab(text: 'All'),
-              Tab(text: 'Fruits'),
-              Tab(text: 'Vegetables'),
-              Tab(text: 'Drinks'),
-              Tab(text: 'Bakery'),
-              Tab(text: 'Other'),
+              flutter.Tab(text: 'All'),
+              flutter.Tab(text: 'Fruits'),
+              flutter.Tab(text: 'Vegetables'),
+              flutter.Tab(text: 'Drinks'),
+              flutter.Tab(text: 'Bakery'),
+              flutter.Tab(text: 'Other'),
             ],
           ),
         ),
         body: Obx(
-          () => TabBarView(
+              () => flutter.TabBarView(
             children: [
               searchController.searchText == ''
                   ? AllProducts()
@@ -64,33 +62,32 @@ class HomeScreen extends StatelessWidget {
   }
 }
 
-class SearchBar extends StatelessWidget {
-  SearchBar({
-    Key? key,
-  }) : super(key: key);
-  SearchController searchController = Get.put(SearchController());
+
+class SearchBar extends flutter.StatelessWidget {
   @override
-  Widget build(BuildContext context) {
-    return Container(
-      margin: const EdgeInsets.symmetric(horizontal: 10),
+  Widget build(flutter.BuildContext context) {
+    mySearchController.SearchController searchController = Get.put(mySearchController.SearchController());
+    return flutter.Container(
+      margin: const flutter.EdgeInsets.symmetric(horizontal: 10),
       height: AppLayout.getHeight(40),
-      decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(10),
+      decoration: flutter.BoxDecoration(
+        color: flutter.Colors.white,
+        borderRadius: flutter.BorderRadius.circular(10),
       ),
-      child: TextField(
+      child: flutter.TextField(
         onChanged: (value) => {
           searchController.searchText = value,
         },
-        decoration: InputDecoration(
-          border: InputBorder.none,
+        decoration: flutter.InputDecoration(
+          border: flutter.InputBorder.none,
           hintText: 'Search...',
-          prefixIcon: Padding(
-            padding: const EdgeInsets.all(10),
-            child: Icon(Icons.search, color: Styles.orangeColor),
+          prefixIcon: flutter.Padding(
+            padding: const flutter.EdgeInsets.all(10),
+            child: flutter.Icon(Icons.search, color: Styles.orangeColor),
           ),
         ),
       ),
     );
   }
 }
+

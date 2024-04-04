@@ -93,62 +93,8 @@ class FirestoreDB {
 
 // Orders
 
-  Future<void> deleteOrder(String id) async {
-    await _firestore.collection('orders').doc(id).delete();
-  }
 
-  Stream<List<Order>> getOrdersByStatus(String status) {
-    return _firestore
-        .collection('orders')
-        .where('status', isEqualTo: status)
-        .snapshots()
-        .map((QuerySnapshot query) {
-      List<Order> retVal = [];
-      query.docs.forEach((element) {
-        retVal.add(Order.fromDocumentSnapshot(snapshot: element));
-      });
-      return retVal;
-    });
-  }
 
-  Future<void> updateOrder(Order order) async {
-    return await _firestore
-        .collection('orders')
-        .doc(order.id)
-        .update(order.toMap());
-  }
-
-  Future<void> addOrder({required Order order}) async {
-    var cartList = order.cart!.map((c) => c).toList();
-    final orderDoc = _firestore.collection('orders').doc();
-    Order newOrder = Order(
-      id: orderDoc.id,
-      cart: order.cart,
-      total: order.total,
-      user: order.user,
-      date: order.date,
-      status: order.status,
-      paymentMethod: order.paymentMethod,
-      paymentStatus: order.paymentStatus,
-      deliveryStatus: order.deliveryStatus,
-    );
-
-    await orderDoc.set(newOrder.toMap());
-  }
-
-  Stream<List<Order>> getAllOrders() {
-    return _firestore
-        .collection('orders')
-        .snapshots()
-        .map((QuerySnapshot query) {
-      List<Order> retVal = [];
-      query.docs.forEach((element) {
-        retVal.add(Order.fromDocumentSnapshot(snapshot: element));
-      });
-
-      return retVal;
-    });
-  }
 
 //  Cart
   Future<void> addToCart(Product product) async {

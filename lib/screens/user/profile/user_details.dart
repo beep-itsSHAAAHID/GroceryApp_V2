@@ -3,7 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:gap/gap.dart';
+
 import 'package:get/get.dart';
 import 'package:get/get_state_manager/get_state_manager.dart';
 
@@ -69,7 +69,7 @@ class UserDetails extends StatelessWidget {
                     imageUrl: userController.myUser.imageUrl,
                     imagePath: imageController.image,
                     callback: () => imageController.pickImage()),
-                const Gap(10),
+
                 // Text(userController.userFirebase!.uid),
                 // Text(userController.myUser.uid.toString()),
                 Text(userController.myUser.name.toString(),
@@ -80,31 +80,31 @@ class UserDetails extends StatelessWidget {
                     style: Styles.headLineStyle4),
                 Text(userController.myUser.phone.toString(),
                     style: Styles.headLineStyle4),
-                const Gap(20),
+
                 BuildTextFormField(
                     'Name',
                     userController.myUser.name.toString(),
                     userController,
                     UniconsLine.user),
-                const Gap(10),
+
                 BuildTextFormField(
                     'Email',
                     userController.myUser.email.toString(),
                     userController,
                     UniconsLine.envelope),
-                const Gap(10),
+
                 BuildTextFormField(
                     'Address',
                     userController.myUser.address.toString(),
                     userController,
                     UniconsLine.location_arrow),
-                const Gap(10),
+
                 BuildTextFormField(
                     'Phone',
                     userController.myUser.phone.toString(),
                     userController,
                     UniconsLine.phone),
-                const Gap(40),
+
                 SizedBox(
                   height: AppLayout.getHeight(50),
                   width: double.infinity,
@@ -115,7 +115,7 @@ class UserDetails extends StatelessWidget {
                     child: Text('Update User'),
                   ),
                 ),
-                const Gap(10),
+
               ],
             ),
           ),

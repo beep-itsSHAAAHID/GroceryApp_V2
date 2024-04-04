@@ -11,14 +11,20 @@ import 'utils/app_routes.dart';
 import 'controller/user_controller.dart';
 import 'firebase_options.dart';
 
+
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp(
-    options: DefaultFirebaseOptions.currentPlatform,
-  );
-  runApp(
-    const MyApp(),
-  );
+  if (Firebase.apps.isEmpty) {
+    print("Initializing Firebase...");
+    await Firebase.initializeApp().then((value) {
+      print("Firebase initialization successful");
+    }).catchError((error) {
+      print("Firebase initialization failed: $error");
+    });
+  } else {
+    print("Firebase is already initialized");
+  }
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {

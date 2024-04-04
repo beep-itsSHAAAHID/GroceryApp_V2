@@ -23,9 +23,15 @@ class DefaultFirebaseOptions {
       case TargetPlatform.android:
         return android;
       case TargetPlatform.iOS:
-        return ios;
+        throw UnsupportedError(
+          'DefaultFirebaseOptions have not been configured for ios - '
+          'you can reconfigure this by running the FlutterFire CLI again.',
+        );
       case TargetPlatform.macOS:
-        return macos;
+        throw UnsupportedError(
+          'DefaultFirebaseOptions have not been configured for macos - '
+          'you can reconfigure this by running the FlutterFire CLI again.',
+        );
       case TargetPlatform.windows:
         throw UnsupportedError(
           'DefaultFirebaseOptions have not been configured for windows - '
@@ -44,39 +50,19 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions web = FirebaseOptions(
-    apiKey: 'AIzaSyAts0wI8-eD8SghojPJ3HOlRcWqIZQdwjQ',
-    appId: '1:754521219990:web:37e51f3f418729916df3b7',
-    messagingSenderId: '754521219990',
-    projectId: 'grocery-2022',
-    authDomain: 'grocery-2022.firebaseapp.com',
-    storageBucket: 'grocery-2022.appspot.com',
+    apiKey: 'AIzaSyDu1rJbmQXpvYO2tgxohJ8ErqAnVU70xcY',
+    appId: '1:1034749972693:web:7983c00a21a935f696925c',
+    messagingSenderId: '1034749972693',
+    projectId: 'groceryapp-af9c3',
+    authDomain: 'groceryapp-af9c3.firebaseapp.com',
+    storageBucket: 'groceryapp-af9c3.appspot.com',
   );
 
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyAZB7S-ea47H79Up-9h8J2MCahGPPpfOBg',
-    appId: '1:754521219990:android:9373e5a6b7630ad66df3b7',
-    messagingSenderId: '754521219990',
-    projectId: 'grocery-2022',
-    storageBucket: 'grocery-2022.appspot.com',
-  );
-
-  static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyDpZ5mqn0QNExduU2w6uJArfWwDC1Lykjw',
-    appId: '1:754521219990:ios:fa1c1d144b1dc0b16df3b7',
-    messagingSenderId: '754521219990',
-    projectId: 'grocery-2022',
-    storageBucket: 'grocery-2022.appspot.com',
-    iosClientId: '754521219990-78ajo9atvn86nn0g42n0dsghf03tl7cp.apps.googleusercontent.com',
-    iosBundleId: 'com.example.groceryApp2022',
-  );
-
-  static const FirebaseOptions macos = FirebaseOptions(
-    apiKey: 'AIzaSyDpZ5mqn0QNExduU2w6uJArfWwDC1Lykjw',
-    appId: '1:754521219990:ios:fa1c1d144b1dc0b16df3b7',
-    messagingSenderId: '754521219990',
-    projectId: 'grocery-2022',
-    storageBucket: 'grocery-2022.appspot.com',
-    iosClientId: '754521219990-78ajo9atvn86nn0g42n0dsghf03tl7cp.apps.googleusercontent.com',
-    iosBundleId: 'com.example.groceryApp2022',
+    apiKey: 'AIzaSyDp-93NOIr7STSUFqfM_Scttp3G7ryMpMc',
+    appId: '1:1034749972693:android:db4dec09009338ac96925c',
+    messagingSenderId: '1034749972693',
+    projectId: 'groceryapp-af9c3',
+    storageBucket: 'groceryapp-af9c3.appspot.com',
   );
 }

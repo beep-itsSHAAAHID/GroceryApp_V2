@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:gap/gap.dart';
 import 'package:get/get.dart';
 import 'package:grocery_app_2022/controller/cart_controller.dart';
 import 'package:grocery_app_2022/styles/app_layout.dart';
@@ -39,7 +38,7 @@ class CartCard extends StatelessWidget {
                       height: AppLayout.getHeight(50),
                       width: AppLayout.getWidth(50),
                     ),
-                    const Gap(8),
+                    SizedBox(width: 8), // replaced Gap with SizedBox
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
@@ -47,7 +46,7 @@ class CartCard extends StatelessWidget {
                           product.title,
                           style: Styles.headLineStyle2,
                         ),
-                        const Gap(6),
+                        SizedBox(height: 6), // replaced Gap with SizedBox
                         Text(
                           product.discount.isGreaterThan(0)
                               ? '${(product.price - (product.price * product.discount / 100)).toStringAsFixed(2)}\$'

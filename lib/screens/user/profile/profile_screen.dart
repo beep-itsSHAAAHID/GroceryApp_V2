@@ -2,7 +2,7 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:gap/gap.dart';
+
 import 'package:get/get.dart';
 import 'package:grocery_app_2022/controller/user_controller.dart';
 
@@ -20,7 +20,7 @@ import '../../../widgets/build_image.dart';
 class ProfileScreen extends StatelessWidget {
   ProfileScreen({super.key});
 
-  UserController userController = Get.put(UserController());
+  final UserController userController = Get.put(UserController());
 
   @override
   Widget build(BuildContext context) {
@@ -28,7 +28,7 @@ class ProfileScreen extends StatelessWidget {
     return Scaffold(
       body: ListView(
         children: [
-          Gap(AppLayout.getHeight(50)),
+
           Obx(
             () => Container(
                 height: AppLayout.getHeight(150),
@@ -47,7 +47,7 @@ class ProfileScreen extends StatelessWidget {
                   ),
                 )),
           ),
-          Gap(AppLayout.getHeight(20)),
+
           Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
@@ -61,7 +61,7 @@ class ProfileScreen extends StatelessWidget {
               ),
             ],
           ),
-          Gap(AppLayout.getHeight(20)),
+
           Container(
               padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
               margin: const EdgeInsets.symmetric(vertical: 5, horizontal: 20),
@@ -110,7 +110,7 @@ class ProfileScreen extends StatelessWidget {
                   ),
                 ],
               )),
-          Gap(AppLayout.getHeight(20)),
+
           ProfileItem(
             icon: UniconsLine.user,
             onTap: () => Navigator.of(context)
